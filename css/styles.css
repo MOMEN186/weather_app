@@ -1,3 +1,133 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.container {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.bg-img {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  object-fit: cover; /* Ensures the image fills the container */
+  z-index: -1; /* Puts the image behind content */
+}
+.content {
+  background-color: var(--content-background-color);
+  width: 40%;
+  height: 50%;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  color: var(--color);
+  transform: translateY(-30%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 30px;
+}
+.search-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* background: white; */
+  padding: 20px;
+  border-radius: 10px;
+  /* box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); */
+}
+label {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+}
+input {
+  width: 300px;
+  font-size: 18px;
+  padding: 10px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+.weather-card {
+  padding: 20px;
+  text-align: center;
+  width: 350px;
+}
+
+.temperature {
+  font-size: 45px;
+  font-weight: bold;
+  margin: 10px 0;
+  color: var(--color);
+}
+
+.weather-details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 16px;
+  color: var(--color);
+}
+
+.detail {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  padding-bottom: 5px;
+  font-weight: bold;
+}
+
+.history-details {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 40px;
+  font-size: 16px;
+  margin: 10px;
+}
+.history-card {
+  background-color: rgba(235, 235, 235, 0.3);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 20%;
+  overflow-y: auto; /* Enable vertical scrolling */
+  overflow-x: hidden;
+}
+.navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 15px 0px 15px 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.dark-mode-btn,
+.sign-out-btn {
+  background: #c4c4c4d9;
+  border: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+:root {
+  --content-background-color: rgba(235, 235, 235, 0.7);
+  --color: black;
+}
 body,html{
     margin: 0;
     padding: 0;
