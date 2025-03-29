@@ -43,9 +43,10 @@ function RetrieveHistory() {
     console.log(historyContainer);
 }
 function renderingHistory(historyContainer,item) {
-    const listItem = document.createElement("li");
-        listItem.innerHTML = `City Name : ${item.name}  &nbsp;&nbsp;&nbsp        Temperature : ${item.main.temp}°C     &nbsp;&nbsp;&nbsp       Weather Description :  ${item.weather[0].description}`;
-        historyContainer.appendChild(listItem);
+    const listItem = document.createElement("dev");
+    listItem.className = "history-details";
+    listItem.innerHTML = `City Name : ${item.name}  &nbsp;&nbsp;&nbsp        Temperature : ${item.main.temp}°C     &nbsp;&nbsp;&nbsp       Weather Description :  ${item.weather[0].description}`;
+    historyContainer.appendChild(listItem);
 }
 
 function renderWeather(data) {
