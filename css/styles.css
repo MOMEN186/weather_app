@@ -158,10 +158,6 @@ body:has(#darkmode:checked) {
   --home-background-color: rgba(0, 0, 0, 0.5);
 }
 
-
-
-
-
 #container{
     background-image: url("../assets/skyview.jpg");
     background-repeat: no-repeat;
