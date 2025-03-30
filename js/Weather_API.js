@@ -1,6 +1,7 @@
 import CONFIG from './config.js';
-
+// 10/10 *
 const API_KEY = CONFIG.API_KEY;
+
 async function fetchWeather(city, country) {
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=metric`;
 
@@ -21,7 +22,6 @@ async function fetchWeather(city, country) {
     }
 }
 
-
 function debounce(func, delay) {
     let timer;
     return function (...args) {
@@ -30,23 +30,25 @@ function debounce(func, delay) {
     };
 }
 
-
 function RetrieveHistory() {
     const history = JSON.parse(localStorage.getItem("history")) || [];
     const historyContainer = document.getElementsByClassName("history-card")[0];
-    historyContainer.innerHTML = ""; // Clear previous history
+    historyContainer.innerHTML = ""; // Clear previous history in dom
     console.log(historyContainer);
     console.log(history);
+
     history.forEach((item) => {
-        renderingHistory(historyContainer, item);
+        renderingHistory(historyContainer, item);// histoy 
     });
     console.log(historyContainer);
 }
+
+
 function renderingHistory(historyContainer,item) {
-    const listItem = document.createElement("dev");
+    const listItem = document.createElement("div");
     listItem.className = "history-details";
-    listItem.innerHTML = `City Name : ${item.name}  &nbsp;&nbsp;&nbsp        Temperature : ${item.main.temp}°C     &nbsp;&nbsp;&nbsp       Weather Description :  ${item.weather[0].description}`;
-    historyContainer.appendChild(listItem);
+    listItem.innerHTML = `City Name : ${item.name}Temperature : ${item.main.temp}°C Weather Description :  ${item.weather[0].description}`;
+    historyContainer.prepend(listItem);
 }
 
 function renderWeather(data) {
@@ -64,6 +66,7 @@ function addToHistory(weatherData) {
     renderingHistory(document.getElementsByClassName("history-card")[0], weatherData);
     
 }
+
 function clearHistory() {
     localStorage.removeItem("history");
     const historyContainer = document.getElementsByClassName("history-card")[0];
@@ -86,10 +89,16 @@ document.getElementById("search-area").addEventListener("input", (event) => {
             const country = input[1].trim() ;
             debouncedFetchWeather(city, country)
 
-        }
-    
-        
-     
-   
+        }  
 });
 RetrieveHistory(); // Call this function to display history on page load
+
+
+// retrieveHistory----->
+
+
+/* 
+
+
+
+*/

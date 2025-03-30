@@ -1,4 +1,6 @@
 const port = 8080;//changr the port based on your pc
+
+
 export async function signup(event) {
   event.preventDefault();
   const username = document.getElementById("username").value;
@@ -23,6 +25,7 @@ export async function signup(event) {
     console.log(e);
   }
 }
+
 export async function login(event) {
   event.preventDefault(); // Prevent pagesrefresh
   const username = document.getElementById("username").value;
@@ -42,6 +45,7 @@ export async function login(event) {
     });
     const data = await result.json();
     localStorage.setItem("token", data.token);
+    
     return data;
   } catch (e) {
     console.log(e);
