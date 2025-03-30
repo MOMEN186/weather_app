@@ -1,7 +1,13 @@
 import CONFIG from './config.js';
 // 10/10 *
 const API_KEY = CONFIG.API_KEY;
-
+const weather = {
+    Fog: "../assets/fog.jpeg",
+    Clear: "../assets/sunny.jpg",
+    Clouds: "../assets/cloudy.jpg",
+    Mist: "../assets/fog.jpeg",
+    Haze: "../assets/fog.jpeg",
+}
 export async function fetchWeather(city, country) {
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=metric`;
 
@@ -60,13 +66,19 @@ function renderWeather(data) {
 
 
 function addToHistory(weatherData) {
+    console.log(weatherData)
     const history = JSON.parse(localStorage.getItem("history")) || [];
     history.push(weatherData);
     localStorage.setItem("history", JSON.stringify(history));
     renderingHistory(document.getElementsByClassName("history-card")[0], weatherData);
-    
+    ChangeBg(weatherData.weather[0].main);
 }
-
+function ChangeBg(condition) {
+    console.log(condition);
+    const img = document.getElementsByClassName("bg-img")[0];
+    img.src = weather[condition];
+    console.log(img.src)
+}
 function clearHistory() {
     localStorage.removeItem("history");
     const historyContainer = document.getElementsByClassName("history-card")[0];

@@ -5,6 +5,14 @@ function populateDropdown() {
     const list = document.getElementById("drop-down");
     list.addEventListener("change", handleChange);
 
+    // just a placeholder option to prevent treating first element as default
+    const placeholder = document.createElement("option");
+    placeholder.textContent = "Select a city";
+    placeholder.disabled = true;
+    placeholder.selected = true;
+    list.appendChild(placeholder);
+    
+    
     predefinedCities.forEach(city => {
         const option = document.createElement("option");
         option.value = `${city.city},${city.country}`;
