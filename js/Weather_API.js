@@ -34,7 +34,7 @@ function debounce(func, delay) {
 function RetrieveHistory() {
     const history = JSON.parse(localStorage.getItem("history")) || [];
     const historyContainer = document.getElementsByClassName("history-card")[0];
-    historyContainer.innerHTML = ""; // Clear previous history
+    //historyContainer.innerHTML = ""; // Clear previous history
     console.log(historyContainer);
     console.log(history);
     history.forEach((item) => {
@@ -43,7 +43,7 @@ function RetrieveHistory() {
     console.log(historyContainer);
 }
 function renderingHistory(historyContainer,item) {
-    const listItem = document.createElement("dev");
+    const listItem = document.createElement("div");
     listItem.className = "history-details";
     listItem.innerHTML = `City Name : ${item.name}  &nbsp;&nbsp;&nbsp        Temperature : ${item.main.temp}°C     &nbsp;&nbsp;&nbsp       Weather Description :  ${item.weather[0].description}`;
     historyContainer.appendChild(listItem);
