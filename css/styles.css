@@ -218,5 +218,7 @@ body:has(#darkmode:checked) {
     height: auto;
   }
 
-
-
+.drop-down{
+  margin-top: 10px;
+  border-radius: 5px;
+}
