@@ -2,7 +2,7 @@ import CONFIG from './config.js';
 // 10/10 *
 const API_KEY = CONFIG.API_KEY;
 
-async function fetchWeather(city, country) {
+export async function fetchWeather(city, country) {
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=metric`;
 
     try {
@@ -40,7 +40,7 @@ function RetrieveHistory() {
     history.forEach((item) => {
         renderingHistory(historyContainer, item);// histoy 
     });
-    console.log(historyContainer);
+    // console.log(historyContainer);
 }
 
 
@@ -88,17 +88,6 @@ document.getElementById("search-area").addEventListener("input", (event) => {
             const city = input[0].trim() ;
             const country = input[1].trim() ;
             debouncedFetchWeather(city, country)
-
         }  
 });
 RetrieveHistory(); // Call this function to display history on page load
-
-
-// retrieveHistory----->
-
-
-/* 
-
-
-
-*/
