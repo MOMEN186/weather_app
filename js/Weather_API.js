@@ -88,6 +88,7 @@ function changeBg(condition) {
     img.src = weatherBG[condition]? weatherBG[condition]:"../assets/backgrounds/skyview.jpg";
     console.log(img.src)
 }
+
 function changeIcon(condition) {
     console.log(condition);
     const img = document.getElementById("icon");

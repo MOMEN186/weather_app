@@ -28,7 +28,7 @@ export async function signup(event) {
 
 export async function login(event) {
   event.preventDefault(); // Prevent pagesrefresh
-  const username = document.getElementById("username").value;
+  const email = document.getElementById("username").value;
   const password = document.getElementById("password").value;
 
   try {
@@ -39,11 +39,12 @@ export async function login(event) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        username,
+        email,
         password,
       }),
     });
     const data = await result.json();
+    console.log(result);
     localStorage.setItem("token", data.token);
     
     return data;

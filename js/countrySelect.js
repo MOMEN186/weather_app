@@ -1,5 +1,7 @@
 import predefinedCities from "./cities.js";
 import {fetchWeather} from "./Weather_API.js";
+
+
 function populateDropdown() {
     console.log(predefinedCities)
     const list = document.getElementById("drop-down");
