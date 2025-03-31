@@ -43,11 +43,17 @@ export async function login(event) {
         password,
       }),
     });
+
     const data = await result.json();
-    console.log(result);
-    localStorage.setItem("token", data.token);
-    
-    return data;
+    if (result.ok) {
+      console.log("Login successful:", data);
+      localStorage.setItem("token", data.token); // Save token to localStorage
+      window.location.href = "home.html"; // Redirect to homepage
+    } else {
+      console.error("Login failed:", data.message);
+      alert("Login failed: " + data.message); // Show error message to the user
+    }
+ 
   } catch (e) {
     console.log(e);
   }
