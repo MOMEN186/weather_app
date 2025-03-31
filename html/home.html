@@ -4,11 +4,11 @@
     <link rel="stylesheet" href="/css/styles.css" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Weather App</title>
   </head>
   <body>
     <div class="container">
-      <img src="/assets/skyview.jpg" class="bg-img" />
+      <img src="/assets/backgrounds/skyview.jpg" class="bg-img" />
       <nav class="navbar">
         <input type="checkbox" id="darkmode" />
         <a href="login.html"><button  id="signout" class="sign-out-btn">Sign Out</button></a>
@@ -24,6 +24,9 @@
             name="city"
             placeholder="Type to search..."
           />
+        <select class="drop-down" id="drop-down">
+
+        </select>
 
           <datalist id="cities"> </datalist>
         </div>
@@ -49,204 +52,9 @@
       </div>
       <div class="history-card"></div>
 
-      <!-- <div class="history-card">
-
-
-
-        <div class="history-details">
-          <div class="hist-detail">
-            <span>City:</span>
-            <span id="city"></span>
-
-            <span>WIND</span>
-            <span id="wind">3.6 m/s</span>
-          </div>
-          <div class="hist-details">
-            <span>PRESSURE</span>
-            <span id="pressure">1020 hPa</span>
-          </div>
-          <div class="hist-details">
-            <span>HUMIDITY</span>
-            <span id="humidity">48%</span>
-          </div>
-        </div>
-
-
-
-
-
-        <div class="history-details">
-          <div class="hist-detail">
-            <span>Country:</span>
-            <span>WIND</span>
-            <span id="wind">3.6 m/s</span>
-          </div>
-          <div class="hist-details">
-            <span>PRESSURE</span>
-            <span id="pressure">1020 hPa</span>
-          </div>
-          <div class="hist-details">
-            <span>HUMIDITY</span>
-            <span id="humidity">48%</span>
-          </div>
-        </div>
-        <div class="history-details">
-          <div class="hist-detail">
-            <span>Country:</span>
-            <span>WIND</span>
-            <span id="wind">3.6 m/s</span>
-          </div>
-          <div class="hist-details">
-            <span>PRESSURE</span>
-            <span id="pressure">1020 hPa</span>
-          </div>
-          <div class="hist-details">
-            <span>HUMIDITY</span>
-            <span id="humidity">48%</span>
-          </div>
-        </div>
-        <div class="history-details">
-          <div class="hist-detail">
-            <span>Country:</span>
-            <span>WIND</span>
-            <span id="wind">3.6 m/s</span>
-          </div>
-          <div class="hist-details">
-            <span>PRESSURE</span>
-            <span id="pressure">1020 hPa</span>
-          </div>
-          <div class="hist-details">
-            <span>HUMIDITY</span>
-            <span id="humidity">48%</span>
-          </div>
-        </div>
-        <div class="history-details">
-          <div class="hist-detail">
-            <span>Country:</span>
-            <span>WIND</span>
-            <span id="wind">3.6 m/s</span>
-          </div>
-          <div class="hist-details">
-            <span>PRESSURE</span>
-            <span id="pressure">1020 hPa</span>
-          </div>
-          <div class="hist-details">
-            <span>HUMIDITY</span>
-            <span id="humidity">48%</span>
-          </div>
-        </div>
-        <div class="history-details">
-          <div class="hist-detail">
-            <span>Country:</span>
-            <span>WIND</span>
-            <span id="wind">3.6 m/s</span>
-          </div>
-          <div class="hist-details">
-            <span>PRESSURE</span>
-            <span id="pressure">1020 hPa</span>
-          </div>
-          <div class="hist-details">
-            <span>HUMIDITY</span>
-            <span id="humidity">48%</span>
-          </div>
-        </div>
-        <div class="history-details">
-          <div class="hist-detail">
-            <span>Country:</span>
-            <span>WIND</span>
-            <span id="wind">3.6 m/s</span>
-          </div>
-          <div class="hist-details">
-            <span>PRESSURE</span>
-            <span id="pressure">1020 hPa</span>
-          </div>
-          <div class="hist-details">
-            <span>HUMIDITY</span>
-            <span id="humidity">48%</span>
-          </div>
-        </div>
-        <div class="history-details">
-          <div class="hist-detail">
-            <span>Country:</span>
-            <span>WIND</span>
-            <span id="wind">3.6 m/s</span>
-          </div>
-          <div class="hist-details">
-            <span>PRESSURE</span>
-            <span id="pressure">1020 hPa</span>
-          </div>
-          <div class="hist-details">
-            <span>HUMIDITY</span>
-            <span id="humidity">48%</span>
-          </div>
-        </div>
-        <div class="history-details">
-          <div class="hist-detail">
-            <span>Country:</span>
-            <span>WIND</span>
-            <span id="wind">3.6 m/s</span>
-          </div>
-          <div class="hist-details">
-            <span>PRESSURE</span>
-            <span id="pressure">1020 hPa</span>
-          </div>
-          <div class="hist-details">
-            <span>HUMIDITY</span>
-            <span id="humidity">48%</span>
-          </div>
-        </div>
-        <div class="history-details">
-          <div class="hist-detail">
-            <span>Country:</span>
-            <span>WIND</span>
-            <span id="wind">3.6 m/s</span>
-          </div>
-          <div class="hist-details">
-            <span>PRESSURE</span>
-            <span id="pressure">1020 hPa</span>
-          </div>
-          <div class="hist-details">
-            <span>HUMIDITY</span>
-            <span id="humidity">48%</span>
-          </div>
-        </div>
-        <div class="history-details">
-          <div class="hist-detail">
-            <span>Country:</span>
-            <span>WIND</span>
-            <span id="wind">3.6 m/s</span>
-          </div>
-          <div class="hist-details">
-            <span>PRESSURE</span>
-            <span id="pressure">1020 hPa</span>
-          </div>
-          <div class="hist-details">
-            <span>HUMIDITY</span>
-            <span id="humidity">48%</span>
-          </div>
-        
-         
-            <span>HUMIDITY</span>
-            <span id="humidity">48%</span>
-          </div>
-        </div>
-        <div class="history-details">
-          <div class="hist-detail">
-            <span>Country:</span>
-            <span>WIND</span>
-            <span id="wind">3.6 m/s</span>
-          </div>
-          <div class="hist-details">
-            <span>PRESSURE</span>
-            <span id="pressure">1020 hPa</span>
-          </div>
-          <div class="hist-details">
-            <span>HUMIDITY</span>
-            <span id="humidity">44%</span>
-          </div>
-        </div>
-      </div> -->
+    
     </div>
   <script type="module" src="../js/Weather_API.js"></script>
+  <script type="module" src="../js/countrySelect.js"></script>
   </body>
 </html>
