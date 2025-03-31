@@ -22,6 +22,7 @@ function populateDropdown() {
     });
     
 }
+
 async function handleChange(e) {
     const input = e.target.value.trim().split(",");    
     console.log(input)
