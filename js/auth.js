@@ -1,4 +1,4 @@
-const port = 8080;//changr the port based on your pc
+const port = 8080;//change the port based on your pc
 
 
 export async function signup(event) {
@@ -6,28 +6,43 @@ export async function signup(event) {
   const username = document.getElementById("username").value;
   const password = document.getElementById("password").value;
   const email = document.getElementById("email").value;
+  console.log("Sending:", { username, password, email }); 
   try {
     const result = await fetch(`http://localhost:${port}/auth/signup`, {
-      method: "POST",
-      headers: {
-        Accept: "*/*",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        username,
-        password,
-        email,
-      }),
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            username,
+            password,
+            email,
+        }),
     });
+    
+    
+    
+    if(result.ok){
+      alert("Signup successful! You can now log in.");
+      window.location.href = '../html/login.html'
+      
+    }
+    if (!result.ok) {
+        const errorData = await result.json();
+        console.error("Backend error:", errorData);
+        throw new Error(errorData.message || 'Signup failed');
+    }
+    
     const data = await result.json();
     return data;
-  } catch (e) {
-    console.log(e);
-  }
+} catch (e) {
+    console.error("Signup error:", e);
+    
+}
 }
 
 export async function login(event) {
-  event.preventDefault(); // Prevent pagesrefresh
+  event.preventDefault();
   const username = document.getElementById("username").value;
   const password = document.getElementById("password").value;
 
@@ -35,7 +50,6 @@ export async function login(event) {
     const result = await fetch(`http://localhost:${port}/auth/login`, {
       method: "POST",
       headers: {
-        Accept: "*/*",
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -43,32 +57,55 @@ export async function login(event) {
         password,
       }),
     });
+
+    if (!result.ok) {
+      const errorData = await result.json();
+      alert(errorData.message || 'Login failed'); 
+      return;
+    }
+
     const data = await result.json();
+    localStorage.setItem("username", username); 
     localStorage.setItem("token", data.token);
     
-    return data;
+    
+    // Show success message
+    console.log('Login successful! Redirecting to home page...');
+    
+    // Redirect to home page
+    window.location.href = '../html/home.html'
+    
   } catch (e) {
-    console.log(e);
+    console.error("Login error:", e);
+    alert('An error occurred during login');
   }
 }
 
-export async function logout() {
-  try {
-    const result = await fetch(`http://localhost:${port}/auth/logout`, {
-      method: "DELETE",
-      headers: {
-        Accept: "*/*",
-        "Content-Type": "application/json",
-      },
-    });
-    const data = await result.json();
-    localStorage.removeItem("token");
-    return data;
-  } catch (e) {
-    console.log(e);
-  }
+function logout() {
+  const username = localStorage.getItem("username");
+  
+  fetch(`http://localhost:${port}/auth/logout`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username }),
+  })
+  .then((res) => res.json())
+  .then((data) => {
+      if (data.success) {
+          localStorage.removeItem("username"); 
+          localStorage.removeItem("token");
+          window.location.href = "../html/login.html"     
+      }
+  })
+  .catch((error) => console.error("Error logging out:", error));
 }
+
+
+
 
 document.getElementById("login-form")?.addEventListener("submit", login);
 document.getElementById("signup-form")?.addEventListener("submit", signup);
-document.getElementsByClassName("sign-out-btn")[0]?.addEventListener("click", logout);
+document.getElementById("signout")?.addEventListener("click", (e) => {
+  console.log("Logout button clicked!"); 
+  logout();
+});

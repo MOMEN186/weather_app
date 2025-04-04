@@ -5,17 +5,28 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather App</title>
+    <script>
+      // Check if user is logged in
+      if (!localStorage.getItem("token")) {
+        console.log("User is not logged in. Redirecting...");
+        window.location.href = "login.html";
+        alert("Please log in to access the weather app.");
+      } else {
+        console.log("User is logged in. Access granted.");
+      }
+      
+    </script>
   </head>
   <body>
     <div class="container">
       <img src="/assets/backgrounds/skyview.jpg" class="bg-img" />
       <nav class="navbar">
         <input type="checkbox" id="darkmode" />
-        <a href="login.html"><button  id="signout" class="sign-out-btn">Sign Out</button></a>
+        <button  id="signout" class="sign-out-btn">Sign Out</button>
       </nav>
 
       <div class="content">
-        <h1>Weather App</h1>
+        <h1 id="welcome">Weather App</h1>
         <div class="search-container">
           <label for="city">Choose a city:</label>
           <input
@@ -56,5 +67,10 @@
     </div>
   <script type="module" src="../js/Weather_API.js"></script>
   <script type="module" src="../js/countrySelect.js"></script>
+  <script type="module" src="../js/auth.js"></script>
+  <script>
+    const username = localStorage.getItem("username");
+    welcome = document.getElementById("welcome");
+    welcome.innerText = `Welcome ${username} To Weather App`;</script>
   </body>
 </html>
