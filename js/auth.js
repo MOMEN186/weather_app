@@ -49,7 +49,7 @@ export async function login(event) {
     if (result.ok) {
       console.log("Login successful:", data);
       localStorage.setItem("token", data.token); // Save token to localStorage
-      //window.location.href = "home.html"; // Redirect to homepage
+      window.location.href = "home.html"; // Redirect to homepage
     } else {
       console.error("Login failed:", data.message);
       alert("Login failed: " + data.message); // Show error message to the user
