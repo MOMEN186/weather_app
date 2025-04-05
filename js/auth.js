@@ -23,7 +23,7 @@ export async function signup(event) {
     const data = await result.json();
     console.log(data.status);
     if (result.ok) {
-      window.location.href=`http://localhost:${port}/html/login.html`
+      window.location.href=`http://127.0.0.1:${port}/html/login.html`
     }
     return data;
   } catch (e) {
@@ -53,9 +53,9 @@ export async function login(event) {
     console.log(data);
     if (result.ok) {
       console.log("Login successful:", data);
-      localStorage.setItem("token", JSON.stringify(data.token)); // Save token to localStorage
-      console.log(data?.token)
-      window.location.href = `http://localhost:${port}/html/home.html`
+      localStorage.setItem("token", data.token); // Save token to localStorage
+      console.log( "hello",localStorage.getItem("token"))
+      window.location.href = `http://127.0.0.1:${port}/html/home.html`
     } else {
       console.error("Login failed:", data.message);
       alert("Login failed: " + data.message); // Show error message to the user
@@ -68,34 +68,41 @@ export async function login(event) {
 
 export async function logout() {
   try {
+    const token = localStorage.getItem("token");
+    console.log("hiii",localStorage.getItem("token"))
     const result = await fetch(`http://localhost:${api_port}/auth/logout`, {
       method: "DELETE",
       headers: {
         Accept: "*/*",
         "Content-Type": "application/json",
-        token: JSON.parse(localStorage.getItem(token))
+        Authorization: `Bearer ${token}`, // Add "Bearer" prefix
+
       },
-      body: {
-        
-      }
+      
     });
     const data = await result.json();
-
+    console.log("hiii",data);
     if (result.ok) {
+      window.location.href = `http://127.0.0.1:${port}/html/login.html`
       localStorage.removeItem("token");
+      
     }
     else {
       console.error("can't logout")
     }
     return data;
   } catch (e) {
-    console.log(e);
+    console.log("errrrror",e);
   }
 }
 
 function isAuthenticated() {
-  if (`http://localhost:${port}/html/home.html` === window.location.href) {
-    const token = JSON.parse(localStorage.getItem("token"));
+  console.log("hello")
+  console.log(window.location.href)
+
+  if (`http://127.0.0.1:5500/html/home.html` === window.location.href) {
+    const token = localStorage.getItem("token");
+    console.log(token);
     if (!token) window.location.href = `http://127.0.0.1:${port}/html/login.html`;
   }
 }

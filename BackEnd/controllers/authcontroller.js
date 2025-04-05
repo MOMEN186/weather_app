@@ -72,14 +72,32 @@ exports.login = async (req, res) => {
 
 exports.logout = async (req, res) => {
     try {
+        console.log("Logout request received:", req.headers['authorization']);
+
+        // Extract the token from the Authorization header
+        const authHeader = req.headers['authorization'];
+        if (!authHeader || !authHeader.startsWith("Bearer ")) {
+            return res.status(401).json({ message: "No token provided or invalid format" });
+        }
+
+        const token = authHeader.split(" ")[1].replace(/^"|"$/g, '');  // Remove "Bearer" prefix
+        console.log("Extracted Token:", token);
+
+        // Verify the token
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        console.log("Decoded Token:", decoded);
+
+        // Add the token to the blacklist
         const expiresAt = new Date();
         expiresAt.setDate(expiresAt.getDate() + 1);
-        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+
         await blackList.create({
-            token: req.token,
-            userId: decoded.userID,
+            token,
+            userId: decoded.userId,
             expiresAt
         });
+        
         res.status(200).json({ message: "User logged out" });
     }
     catch (e) {
