@@ -1,6 +1,7 @@
 {
   "type": "module",
   "dependencies": {
-    "dotenv": "^16.4.7"
+    "passport": "^0.7.0",
+    "dotenv":"^16.4.7"
   }
 }

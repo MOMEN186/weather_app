@@ -4,7 +4,7 @@ html {
   padding: 0;
   overflow: hidden;
 }
-.container {
+#container,.container {
   position: relative;
   height: 100vh;
   width: 100vw;
