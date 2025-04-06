@@ -1,22 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <link rel="stylesheet" href="/css/styles.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
+    <link rel="stylesheet" href="../css/styles.css" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather App</title>
   </head>
   <body>
     <div class="container">
-      <img src="/assets/backgrounds/skyview.jpg" class="bg-img" />
+      <img src="../assets/backgrounds/skyview.jpg" class="bg-img" />
       <nav class="navbar">
         <input type="checkbox" id="darkmode" />
-        <!-- <a href="login.html">
-          <button  id="signout" class="sign-out-btn">Sign Out</button>
-        </a> -->
-        <button  id="signout" class="sign-out-btn">Sign Out</button>
+        <a href="login.html"
+          ><button id="signout" class="sign-out-btn">Sign Out</button></a
+        >
       </nav>
 
       <div class="content">
@@ -30,9 +27,7 @@
             name="city"
             placeholder="Type to search..."
           />
-        <select class="drop-down" id="drop-down">
-
-        </select>
+          <select class="drop-down" id="drop-down"></select>
 
           <datalist id="cities"> </datalist>
         </div>
@@ -41,14 +36,14 @@
 
           <div class="weather-details">
             <div class="detail">
-              <span>WEATER DESCRIPTION</span>
+              <span>WEATHER DESCRIPTION</span>
               <span id="description">1020 hPa</span>
             </div>
             <div class="detail">
               <span>WIND</span>
               <span id="wind">3.6 m/s</span>
             </div>
-            
+
             <div class="detail">
               <span>HUMIDITY</span>
               <span id="humidity">48%</span>
@@ -57,11 +52,9 @@
         </div>
       </div>
       <div class="history-card"></div>
-
-    
     </div>
-  <script type="module" src="../js/Weather_API.js"></script>
-  <script type="module" src="../js/countrySelect.js"></script>
-  <script type="module" src="../js/auth.js"></script>
+    <script type="module" src="../js/Weather_API.js"></script>
+    <script type="module" src="../js/countrySelect.js"></script>
+    <script type="module" src="../js/auth.js"></script>
   </body>
 </html>
